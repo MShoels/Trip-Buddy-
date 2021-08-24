@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Trip</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    {% load static %}
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-light justify-content-center">
+        <div class='container-fluid'>
+            <h1 class="navbar-brand">TripBuddy</h1>
+            <a class="navbar-brand ml-auto navbar-link" href="/dashboard">Dashboard</a>
+            <a class="navbar-brand navbar-link" href="/destroy">Logout</a>
+        </div>
+    </nav>
+    <div class="container mt-2">
+        <h1 class="display-5">Destination</h1>
+        <div class="container jumbotron details">
+            <ul>
+                <li><span>Start Date:</span> {{this_trip.start_date}}</li>
+                <li><span>End Date:</span> {{this_trip.end_date}}</li>
+                <li><span>Created On:</span> {{this_trip.created_at}}</li>
+                <li><span>Last Updated:</span> {{this_trip.updated_at}}</li>
+                <li><span>Plan:</span> {{this_trip.plan}}</li>
+                <li><span>Created by:</span> {{this_trip.planner.first_name}}</li>
+            </ul>
+        </div>
+        <div class="container jumbotron mt-5">
+            <ul>
+                <li><span>People who've joined the trip</span></li>
+                <ul>
+                    {% for guest in this_trip.guest.all %}
+                    <li>{{guest.first_name}}</li>
+                    {% endfor %}
+                </ul>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
